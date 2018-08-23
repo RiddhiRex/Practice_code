@@ -1,0 +1,22 @@
+"""
+Given a sequence, write a program to detect cycles within it.
+Input:
+Your program should read lines of text from standard input. 
+Each line will contain a sequence of space delimited numbers, which can have multiple digits (e.g., 12). Ignore empty lines.
+Output:
+For each line of input, print to standard output the first cycle you find. 
+Ensure that there are no trailing spaces on each line you print.
+Test 1
+Test Input 2 0 6 3 1 6 3 1 6 3 1
+Test Output6 3 1
+"""
+def cycleCheck(line):
+  for each in line:
+      i=2
+      s= each
+      rev= s[::-1]
+      while(rev[0:i]!=rev[i:i+i]):
+          i=i+1
+
+      lis = (rev[0:i])[::-1])
+      return " ".join(lis)
