@@ -24,8 +24,7 @@ void myMemMove(void *dest, void *src, int len)
 int main() 
 { 
    char src_st[100] = "asdf"; 
-   char dest_st[100];
-   myMemMove(dest_st, src_st, strlen(src_st)+1); 
-   printf("%s", dest_st); 
+   myMemMove(src_st+10, src_st, strlen(src_st)+1); 
+   printf("%s", src_st); 
    return 0; 
 }
