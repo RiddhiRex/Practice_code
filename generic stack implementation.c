@@ -1,4 +1,3 @@
-//Generic stack implementation in C
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -8,32 +7,38 @@ typedef struct Stack {
     struct Stack *next;
 }*pstack;
 
-bool is_empty(pstack *s);
-void make_empty(pstack *s);
+bool is_empty(struct Stack *s);
+void make_empty(struct Stack *s);
 void push(struct Stack **s, void *new_num);
-void *pop(pstack *s);
+void *pop(struct Stack **s);
 
 
-bool is_empty(pstack *s) { 
-    return !s; 
+bool is_empty(struct Stack *s) { 
+    if(s==NULL)
+        return true;
+    else
+        return false;
 }
 
-void make_empty(pstack *s)
+void make_empty(struct Stack *s)
 {
     while(!is_empty(s))
         pop(s);
 }
 
-void *pop(pstack *s)
+void *pop(struct Stack **s)
 {
+
     struct Stack *tmp;
     void *i;
-    if (is_empty(s)){
+    if (is_empty(*s)){
         i=NULL;
         return i;
     }
     tmp = *s;
+    
     i = (*s)->data;
+
     *s = (*s)->next;
     free(tmp);
     return i;
@@ -49,6 +54,7 @@ void push(struct Stack **s, void *new_num)
     new_node->data = new_num;
     new_node->next = *s;
     *s = new_node;
+
     return;
 }
 
@@ -73,7 +79,7 @@ int main(void)
     else
     printf("Popped %d from s1\n", *((int *)n));
     
-    ret = is_empty(&s1);
+    ret = is_empty(s1);
     if(ret)
         printf("Stack is empty \n");
     else
